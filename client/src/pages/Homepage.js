@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import PollItems from "../components/AddItems";
+import Auth from "../utils/auth";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
 
@@ -21,7 +23,11 @@ const Homepage = () => {
             <div className="description">
                 <h2>How Does Rank Choice Work?</h2>
                 <p> If a poll option wins a majority of first-preference votes, it is declared the winner. If no poll option wins a majority of first-preference votes, the poll option with the fewest first-preference votes is eliminated. First-preference votes cast for the failed poll option are eliminated, lifting the second-preference choices indicated on those ballots. A new tally is conducted to determine whether any poll option has won a majority of the adjusted votes. The process is repeated until a poll option wins an outright majority.</p>
-                <button onClick={handlePollButton}>Create Poll</button>
+                {Auth.loggedIn ? (
+                    <button onClick={handlePollButton}>Create Poll</button>
+                ) : (
+                    <Link to="/signin">Need to Signin</Link>
+                )}
             </div>
             }
 

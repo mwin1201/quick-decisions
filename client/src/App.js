@@ -8,6 +8,7 @@ import {
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
 
+import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
 
 const httpLink = createHttpLink({
@@ -35,6 +36,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Header />
           <Routes>
             <Route path="/" element={<Homepage />} />
           </Routes>
